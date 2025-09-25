@@ -133,7 +133,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server, {
   cors: {
     origin: [
-      "https://your-frontend.vercel.app", // 👈 replace with your actual Vercel frontend URL
+      "https://gupp-shupp.vercel.app", // 👈 replace with your actual Vercel frontend URL
     ],
     methods: ["GET", "POST"]
   }
