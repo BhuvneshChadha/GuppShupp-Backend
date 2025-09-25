@@ -130,14 +130,15 @@ const app = express();
 const server = http.createServer(app);
 
 // ✅ Allow CORS from your Vercel frontend
-const io = require('socket.io')(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
+app.use(cors({
+  origin: "https://gupp-shupp.vercel.app",
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true
+}));
+app.options('*', cors());
 
-app.use(cors());
+// Do NOT set cors inside socket.io constructor in v2
+var io = require('socket.io')(server);
 app.use(bodyParser.json());
 
 // ✅ Health check route
